@@ -1,16 +1,27 @@
 // Arquivo: src/scss/header.scss
 @use "variables" as *;
+// Header fixo
+#js-header {
+  transition: all 0.3s;
+}
+#js-header.fixed-menu {
+  background: #152b4a;
+  height: 80px;
+}
+.newsletter_text::placeholder,
+.newsletter_text::placeholder {
+  color: white !important;
+}
 
 // Header nav_content modo dropdown ativo
 header.dropdown-open .nav_content {
   background: rgba(11, 0, 2, 0.6);
   border-radius: 24px 24px 0 0;
-  border-bottom: rgba(255, 255, 255, 0.03); 
+  border-bottom: rgba(255, 255, 255, 0.03);
 }
-
 // Header dropdown-menu modo dropdown ativo
 header.dropdown-open .dropdown-menu {
-  pointer-events: all; 
+  pointer-events: all;
 }
 /* Botão dropdown */
 .btn-dropdown {
@@ -30,12 +41,10 @@ header.dropdown-open .dropdown-menu {
   pointer-events: all !important;
   transform: translateX(-50%) translateY(0);
 }
-
 header.mobile-menu-active .nav_content {
   border-radius: 12px 12px 0 0;
   border-bottom: transparent;
 }
-
 header .nav-menu {
   @include responsivo("tablet") {
     border: 1px solid #ffffff0d;
