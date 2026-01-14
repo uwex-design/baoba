@@ -5,6 +5,7 @@
 // ===== IMPORTS DOS MÓDULOS =====
 @use "header";
 @use "swiper-produtos";
+@use "newsletter";
 
 // Override do Webflow para corrigir o z-index do menu mobile
 .w-nav-overlay {
@@ -14,3 +15,5 @@
     transform: translateX(-50%);  
   }
 }
+
+
