@@ -1,0 +1,35 @@
+// Baoba - Variáveis SCSS
+// Arquivo: src/scss/_variables.scss
+@use "sass:map";
+
+// Cores principais
+$primary-color: #ff6b35;
+$secondary-color: #2c3e50;
+$text-color: #333;
+$white-color: #ffffff;
+$border-radius: 4px;
+$transition: all 0.3s ease;
+
+// Cores específicas do projeto Baoba
+$brms-background: #171717;
+$brms-primary: #E4002B;
+$brms-blue: rgba(38, 101, 180, 0.40);
+$brms-red: rgba(228, 0, 43, 0.30);
+
+// Breakpoints otimizados (apenas 3)
+$breakpoint: (
+  "desktop": 1280px, // Desktops e laptops
+  "tablet": 1025px,   // Tablets
+  "mobile": 640px    // Smartphones 
+);
+
+// Mixin responsivo
+@mixin responsivo($breakpoint-name) {
+  @if map.has-key($breakpoint, $breakpoint-name) {
+    @media (max-width: map.get($breakpoint, $breakpoint-name)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint não existe: #{$breakpoint-name}";
+  }
+}

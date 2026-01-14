@@ -1,0 +1,16 @@
+// Baoba - Main
+// ===== VARIÁVEIS =====
+@use "variables" as *;
+
+// ===== IMPORTS DOS MÓDULOS =====
+@use "header";
+@use "swiper-produtos";
+
+// Override do Webflow para corrigir o z-index do menu mobile
+.w-nav-overlay {
+  @include responsivo("tablet") {
+    width: 95% !important;
+    left: 50%;
+    transform: translateX(-50%);  
+  }
+}

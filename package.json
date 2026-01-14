@@ -1,0 +1,39 @@
+{
+  "name": "br-moto-sport",
+  "version": "1.0.0",
+  "description": "Projeto Baoba - Arquivos CSS e JS para integração com Webflow",
+  "main": "dist/js/main.js",
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "dev": "gulp dev",
+    "clean": "gulp clean"
+  },
+  "keywords": [
+    "webflow",
+    "css",
+    "javascript",
+    "scss",
+    "moto-sport"
+  ],
+  "author": "Baoba",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^3.0.0",
+    "sass": "^1.69.0"
+  },
+  "dependencies": {
+    "gsap": "^3.12.2",
+    "lenis": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seuusuario/br-moto-sport.git"
+  },
+  "homepage": "https://seuusuario.github.io/br-moto-sport/"
+}
