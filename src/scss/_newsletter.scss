@@ -1,4 +1,6 @@
 // Arquivo: src/scss/_newsletter.scss
+
+@use "variables" as *;
 .newsletter_text::placeholder,
 .newsletter_text::placeholder {
   color: $white !important;
