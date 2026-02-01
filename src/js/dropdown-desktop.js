@@ -1,146 +1,49 @@
 /**
- * Baoba - Dropdown Desktop (Produção)
- * Otimizado para performance e estabilidade
+ * Baoba - Dropdown Desktop
+ * Arquivo: src/js/dropdown-desktop.js
  */
 
-(function() {
-  'use strict'; 
-  
-  const DEV = window.location.hostname === 'localhost' || window.location.search.includes('debug');
-  const DESKTOP_BREAKPOINT = 1024;
-  
-  let resizeTimeout;
-  let dropdownInstance = null;
-  
-  function log(message) {
-    if (DEV) console.log('Baoba:', message);
-  }
-  
-  function isDesktop() {
-    return window.innerWidth > DESKTOP_BREAKPOINT;
-  }
-  
-  function createDropdownInstance() {
-    const dropdownBtn = document.querySelector('.btn-dropdown');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const header = document.querySelector('.header-main');
-    
-    if (!dropdownBtn || !dropdownMenu) {
-      log('Elementos do dropdown desktop não encontrados');
-      return null;
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.querySelector(".btn-dropdown");
+  const dropdown = document.querySelector(".dropdown_pai");
+  const header = document.querySelector("#js-header");
+
+  if (!btn || !dropdown) return;
+
+  const menuItems = dropdown.querySelectorAll(".dropdown_menu_item");
+  const mediaItems = dropdown.querySelectorAll(".dropdown_media_item");
+
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    dropdown.classList.toggle("active");
+    btn.classList.toggle("active");
+    if (header) header.classList.toggle("dropdown-open");
+  });
+
+  document.addEventListener("click", function (e) {
+    if (
+      !e.target.closest(".btn-dropdown") &&
+      !e.target.closest(".dropdown_pai")
+    ) {
+      dropdown.classList.remove("active");
+      btn.classList.remove("active");
+      if (header) header.classList.remove("dropdown-open");
     }
-    
-    return {
-      btn: dropdownBtn,
-      menu: dropdownMenu,
-      header: header,
-      
-      close: function() {
-        this.menu.classList.remove('active');
-        this.btn.classList.remove('active');
-        if (this.header) {
-          this.header.classList.remove('dropdown-open');
-        }
-      },
-      
-      open: function() {
-        this.menu.classList.add('active');
-        this.btn.classList.add('active');
-        if (this.header) {
-          this.header.classList.add('dropdown-open');
-        }
-      },
-      
-      toggle: function() {
-        if (this.menu.classList.contains('active')) {
-          this.close();
-        } else {
-          this.open();
-        }
-      },
-      
-      setup: function() {
-        const self = this;
-        
-        // Click handler
-        function handleClick(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          self.toggle();
-        }
-        
-        // Mouse leave handlers
-        function handleMenuLeave() {
-          self.close();
-        }
-        
-        function handleBtnLeave() {
-          setTimeout(() => {
-            if (!self.menu.matches(':hover')) {
-              self.close();
-            }
-          }, 100);
-        }
-        
-        // Click outside handler
-        function handleOutsideClick(e) {
-          if (!e.target.closest('.btn-dropdown') && !e.target.closest('.dropdown-menu')) {
-            self.close();
-          }
-        }
-        
-        // Remove existing listeners
-        this.btn.removeEventListener('click', handleClick);
-        this.menu.removeEventListener('mouseleave', handleMenuLeave);
-        this.btn.removeEventListener('mouseleave', handleBtnLeave);
-        document.removeEventListener('click', handleOutsideClick);
-        
-        // Add new listeners
-        this.btn.addEventListener('click', handleClick);
-        this.menu.addEventListener('mouseleave', handleMenuLeave);
-        this.btn.addEventListener('mouseleave', handleBtnLeave);
-        document.addEventListener('click', handleOutsideClick);
-      }
-    };
-  }
-  
-  function initDesktopDropdown() {
-    try {
-      if (!isDesktop()) {
-        if (dropdownInstance) {
-          dropdownInstance.close();
-          dropdownInstance = null;
-        }
-        return;
-      }
-      
-      dropdownInstance = createDropdownInstance();
-      if (dropdownInstance) {
-        dropdownInstance.setup();
-        log('Dropdown desktop inicializado');
-      }
-    } catch (error) {
-      if (DEV) console.error('Erro ao inicializar dropdown desktop:', error);
-    }
-  }
-  
-  // Debounced resize handler
-  function handleResize() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(initDesktopDropdown, 250);
-  }
-  
-  // Initialize
-  function init() {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initDesktopDropdown);
-    } else {
-      initDesktopDropdown();
-    }
-    
-    window.addEventListener('resize', handleResize);
-  }
-  
-  init();
-  
-})();
+  });
+
+  menuItems.forEach(function (item, index) {
+    item.addEventListener("mouseenter", function () {
+      mediaItems.forEach(function (media, i) {
+        media.classList.toggle("active", i === index);
+      });
+      menuItems.forEach(function (i) {
+        i.classList.remove("active");
+      });
+      item.classList.add("active");
+    });
+  });
+
+  if (mediaItems.length > 0) mediaItems[0].classList.add("active");
+  if (menuItems.length > 0) menuItems[0].classList.add("active");
+});

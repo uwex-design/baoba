@@ -8,7 +8,28 @@
   background: #152b4a;
   height: 80px;
 }
+// Dropdown do menu
+.nav_menu .btn-dropdown {
+  position: relative;
+  padding-right: 20px;
+}
+.nav_menu .btn-dropdown::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url("https://cdn.prod.website-files.com/695e68922c02a2964ba28c43/696022de5c3da1b81e27da01_arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position-x: right;
+  background-position-y: center;
+}
 //páginas internas
 .page-interna .nav_component {
-  opacity: 100%!important;
+  opacity: 100% !important;
 }
+// .steps_baoba_grid .steps_baoba_item:nth-child(odd) .empty {
+// 	order: 1;
+// }

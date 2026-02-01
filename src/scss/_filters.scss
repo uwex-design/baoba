@@ -1,0 +1,29 @@
+.checkbox_filter.is-all:has(~ .w-dyn-list .fs-cmsfilter_active) {
+  background-color: transparent !important;
+}
+
+.filter_wrap {
+  overflow-x: auto;
+  display: flex;
+  gap: 1rem;
+  -webkit-overflow-scrolling: touch;
+  
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+}
+
+.filter_list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
