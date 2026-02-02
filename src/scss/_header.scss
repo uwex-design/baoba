@@ -30,6 +30,132 @@
 .page-interna .nav_component {
   opacity: 100% !important;
 }
-// .steps_baoba_grid .steps_baoba_item:nth-child(odd) .empty {
-// 	order: 1;
-// }
+// Placeholder
+.form_field-wrapper-2 .form_input_text::placeholder {
+  color: #506178 !important;
+}
+
+.nav_menu .btn-dropdown {
+	position: relative;
+	padding-right: 24px;
+}
+.nav_menu .btn-dropdown::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+    content: '';
+	width: 24px;
+	height: 24px;
+	background: url('https://cdn.prod.website-files.com/695e68922c02a2964ba28c43/696022de5c3da1b81e27da01_arrow.svg');
+	background-repeat: no-repeat;
+	background-size: 16px;
+	background-position-x: center;
+    background-position-y: center;
+  	transition: all 0.4s;
+}
+
+.dropdown_media_item {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.dropdown_media_item.active {
+  opacity: 1;
+  transform: scale(1);
+  animation: fadeScaleIn 0.5s ease;
+}
+
+@keyframes fadeScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dropdown_menu_item {
+  position: relative;
+  padding-left: 0;
+  transition: padding-left 0.5s ease;
+}
+
+.dropdown_menu_item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 1px;
+  background-color: #5F728D;
+  transition: width 0.5s ease;
+}
+
+.dropdown_menu_item:hover,
+.dropdown_menu_item.active {
+  padding-left: 32px;
+}
+
+.dropdown_menu_item:hover::before,
+.dropdown_menu_item.active::before {
+  width: 24px;
+}
+.dropdown_menu_item.active .dropdown_item_text {
+	color: white;  
+}
+
+.dropdown_pai.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  overflow: visible;
+  transform: translateY(0);
+}
+
+#js-header.dropdown-open {
+  background-color: #152b4a;
+}
+.nav_menu .btn-dropdown.active::after {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 991px) {
+ 
+  .dropdown-mobile-submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    
+   
+    a {
+      display: block;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+  
+  .dropdown-mobile-submenu.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    max-height: none;
+  }
+  
+  .dropdown_pai {
+    display: none !important;
+  }
+}
