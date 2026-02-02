@@ -36,22 +36,22 @@
 }
 
 .nav_menu .btn-dropdown {
-	position: relative;
-	padding-right: 24px;
+  position: relative;
+  padding-right: 24px;
 }
 .nav_menu .btn-dropdown::after {
-	position: absolute;
-	top: 0;
-	right: 0;
-    content: '';
-	width: 24px;
-	height: 24px;
-	background: url('https://cdn.prod.website-files.com/695e68922c02a2964ba28c43/696022de5c3da1b81e27da01_arrow.svg');
-	background-repeat: no-repeat;
-	background-size: 16px;
-	background-position-x: center;
-    background-position-y: center;
-  	transition: all 0.4s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: url("https://cdn.prod.website-files.com/695e68922c02a2964ba28c43/696022de5c3da1b81e27da01_arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position-x: center;
+  background-position-y: center;
+  transition: all 0.4s;
 }
 
 .dropdown_media_item {
@@ -83,14 +83,14 @@
 }
 
 .dropdown_menu_item::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
   width: 0;
   height: 1px;
-  background-color: #5F728D;
+  background-color: #5f728d;
   transition: width 0.5s ease;
 }
 
@@ -104,7 +104,7 @@
   width: 24px;
 }
 .dropdown_menu_item.active .dropdown_item_text {
-	color: white;  
+  color: white;
 }
 
 .dropdown_pai.active {
@@ -123,38 +123,36 @@
 }
 
 @media (max-width: 991px) {
- 
   .dropdown-mobile-submenu {
     display: none;
     flex-direction: column;
     padding-left: 1rem;
     background: rgba(0, 0, 0, 0.05);
-    
-   
+
     a {
       display: block;
       padding: 0.75rem 1rem;
       text-decoration: none;
       color: inherit;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      
+
       &:last-child {
         border-bottom: none;
       }
-      
+
       &:hover {
         background: rgba(0, 0, 0, 0.05);
       }
     }
   }
-  
+
   .dropdown-mobile-submenu.active {
     display: flex;
     opacity: 1;
     visibility: visible;
     max-height: none;
   }
-  
+  // Dropdown Principal
   .dropdown_pai {
     display: none !important;
   }
