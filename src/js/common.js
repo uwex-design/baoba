@@ -1,8 +1,3 @@
-/**
- * Baoba - Código Comum
- * Arquivo: src/js/common.js
- */
-
 document.addEventListener("DOMContentLoaded", function () {
   // Header fixed
   const header = document.getElementById("js-header");
