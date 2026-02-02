@@ -2,10 +2,10 @@
 // Arquivo: src/js/libs.js
 
 // Funções utilitárias globais
-window.BRMotoSport = window.BRMotoSport || {};
+window.Baoba = window.Baoba || {};
 
 // Utilitário para debounce
-BRMotoSport.debounce = function(func, wait) {
+Baoba.debounce = function(func, wait) {
   let timeout;
   return function executedFunction(...args) {
     const later = () => {
@@ -18,7 +18,7 @@ BRMotoSport.debounce = function(func, wait) {
 };
 
 // Utilitário para throttle
-BRMotoSport.throttle = function(func, limit) {
+Baoba.throttle = function(func, limit) {
   let inThrottle;
   return function() {
     const args = arguments;
@@ -32,7 +32,7 @@ BRMotoSport.throttle = function(func, limit) {
 };
 
 // Função para lazy loading
-BRMotoSport.lazyLoad = function() {
+Baoba.lazyLoad = function() {
   const images = document.querySelectorAll('img[data-src]');
   
   const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -50,7 +50,7 @@ BRMotoSport.lazyLoad = function() {
 };
 
 // Função para smooth scroll
-BRMotoSport.smoothScroll = function(target) {
+Baoba.smoothScroll = function(target) {
   const element = document.querySelector(target);
   if (element) {
     element.scrollIntoView({
