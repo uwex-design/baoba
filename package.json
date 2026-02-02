@@ -20,12 +20,13 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-sass": "^5.1.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-uglify": "^3.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^6.0.1",
     "gulp-sourcemaps": "^3.0.0",
-    "sass": "^1.69.0"
+    "gulp-terser": "^2.1.0",
+    "gulp-uglifycss": "^1.1.0",
+    "sass": "^1.89.0"
   },
   "dependencies": {
     "gsap": "^3.12.2",
