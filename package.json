@@ -1,8 +1,8 @@
 {
-  "name": "br-moto-sport",
+  "name": "baoba",
   "version": "1.0.0",
   "description": "Projeto Baoba - Arquivos CSS e JS para integração com Webflow",
-  "main": "dist/js/main.js",
+  "main": "dist/js/bundle.js",
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
@@ -14,9 +14,9 @@
     "css",
     "javascript",
     "scss",
-    "moto-sport"
+    "baoba"
   ],
-  "author": "Baoba",
+  "author": "UWEX Design",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^4.0.2",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/seuusuario/br-moto-sport.git"
+    "url": "https://github.com/uwex-design/baoba.git"
   },
-  "homepage": "https://seuusuario.github.io/br-moto-sport/"
+  "homepage": "https://uwex-design.github.io/baoba/"
 }
