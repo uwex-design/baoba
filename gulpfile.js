@@ -6,25 +6,21 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const terser = require('gulp-terser');
-const uglifycss = require('gulp-uglifycss');
+const cleanCSS = require('gulp-clean-css');
 const sass = require('gulp-sass')(require('sass'));
 
 // ===== SCSS → CSS =====
 function compileSCSS() {
   return gulp
-    .src('src/scss/main.scss', { sourcemaps: true })
+    .src('src/scss/main.scss')
     .pipe(sourcemaps.init())
     .pipe(
       sass({ api: 'modern' }).on('error', sass.logError)
     )
-    .pipe(
-      uglifycss({
-        uglyComments: true,
-      })
-    )
+    .pipe(cleanCSS())
     .pipe(rename('main.css'))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/css', { sourcemaps: true }));
+    .pipe(gulp.dest('dist/css'));
 }
 
 // ===== JavaScript - Bundle Unificado =====
