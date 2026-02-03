@@ -1,0 +1,56 @@
+@use "variables" as *;
+
+@media (max-width: 991px) {
+  .dropdown-mobile-submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+
+    a {
+      display: block;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px #5F728D;
+      font-size: 18px;
+      font-weight: 400;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: #5F728D;
+      }
+    }
+  }
+
+  .dropdown-mobile-submenu.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    max-height: none;
+  }
+  // Dropdown Principal
+  .dropdown_pai {
+    display: none !important;
+  }
+}
+// Override do Webflow para corrigir o z-index do menu mobile
+.w-nav-overlay {
+  @include responsivo("tablet") {
+    width: 100% !important;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 991px) {
+  .nav_menu {
+    &:not(:last-child) {
+      margin-bottom: 24px!important;
+    }
+  }
+}

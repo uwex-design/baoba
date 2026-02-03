@@ -1,0 +1,84 @@
+@use "variables" as *;
+
+// Dropdown do menu - Desktop
+.nav_menu .btn-dropdown {
+  position: relative;
+  padding-right: 20px;
+}
+.nav_menu .btn-dropdown::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url("https://cdn.prod.website-files.com/695e68922c02a2964ba28c43/696022de5c3da1b81e27da01_arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position-x: right;
+  background-position-y: center;
+}
+.dropdown_media_item {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.dropdown_media_item.active {
+  opacity: 1;
+  transform: scale(1);
+  animation: fadeScaleIn 0.5s ease;
+}
+
+@keyframes fadeScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dropdown_menu_item {
+  position: relative;
+  padding-left: 0;
+  transition: padding-left 0.5s ease;
+}
+
+.dropdown_menu_item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 1px;
+  background-color: #5f728d;
+  transition: width 0.5s ease;
+
+  @include responsivo("tablet") {
+    display: none;
+  }
+}
+
+.dropdown_menu_item:hover,
+.dropdown_menu_item.active {
+  padding-left: 32px;
+}
+
+.dropdown_menu_item:hover::before,
+.dropdown_menu_item.active::before {
+  width: 24px;
+}
+.dropdown_menu_item.active .dropdown_item_text {
+  color: white;
+}
+
+.dropdown_pai.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  overflow: visible;
+  transform: translateY(0);
+}
