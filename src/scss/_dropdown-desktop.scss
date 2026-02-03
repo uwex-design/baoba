@@ -7,7 +7,7 @@
 }
 .nav_menu .btn-dropdown::after {
   position: absolute;
-  top: 0;
+  top: 50%;
   right: 0;
   content: "";
   width: 16px;
@@ -15,8 +15,9 @@
   background: url("https://cdn.prod.website-files.com/695e68922c02a2964ba28c43/696022de5c3da1b81e27da01_arrow.svg");
   background-repeat: no-repeat;
   background-size: 16px;
-  background-position-x: right;
-  background-position-y: center;
+  background-position: center;
+  transition: 0.4s all ease;
+  transform: translateY(-50%);
 }
 
 .dropdown_media_item {
@@ -84,5 +85,5 @@
   transform: translateY(0);
 }
 .nav_menu .btn-dropdown.active::after {
-  transform: rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
 }

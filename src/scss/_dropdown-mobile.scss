@@ -47,21 +47,13 @@
     margin-bottom: 24px !important;
   }
 
-  // btn-dropdown::after - ícone fixo que rotaciona no lugar (sem background-position-x/y)
+  // btn-dropdown::after - override: ícone maior (touch) + transform-origin para rotação no lugar
   .nav_menu .btn-dropdown::after {
     width: 24px;
     height: 24px;
-    right: 0;
-    top: 50%;
-    left: auto;
-    background-position: center;
-    transform: translateY(-50%);
+    background-size: 24px;
     transform-origin: center center;
     transition: transform 0.3s ease;
-  }
-
-  .nav_menu .btn-dropdown.active::after {
-    transform: translateY(-50%) rotate(180deg);
   }
 }
 
