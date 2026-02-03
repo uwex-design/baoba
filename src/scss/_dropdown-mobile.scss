@@ -1,28 +1,23 @@
 @use "variables" as *;
 
-@media (max-width: 991px) {
+// ===== Mobile (tablet: 1025px) =====
+@include responsivo("tablet") {
+  // Submenu accordion
   .dropdown-mobile-submenu {
     display: none;
     flex-direction: column;
     padding-left: 1rem;
-    background: rgba(0, 0, 0, 0.05);
 
     a {
       display: block;
       text-align: left;
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      color: inherit;
-      border-bottom: 1px #5F728D;
-      font-size: 18px;
-      font-weight: 400;
 
       &:last-child {
         border-bottom: none;
       }
 
       &:hover {
-        background: #5F728D;
+        background: #5f728d;
       }
     }
   }
@@ -33,24 +28,48 @@
     visibility: visible;
     max-height: none;
   }
-  // Dropdown Principal
+
+  // Esconde dropdown desktop
   .dropdown_pai {
     display: none !important;
   }
+
+  // Override Webflow [data-nav-menu-open] display: block !important
+  [data-nav-menu-open] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: stretch;
+  }
+
+  // Espaço entre itens do menu
+  .nav_menu:not(:last-child) {
+    margin-bottom: 24px !important;
+  }
+
+  // btn-dropdown::after - ícone fixo que rotaciona no lugar (sem background-position-x/y)
+  .nav_menu .btn-dropdown::after {
+    width: 24px;
+    height: 24px;
+    right: 0;
+    top: 50%;
+    left: auto;
+    background-position: center;
+    transform: translateY(-50%);
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+  }
+
+  .nav_menu .btn-dropdown.active::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
 }
-// Override do Webflow para corrigir o z-index do menu mobile
+
+// Override Webflow - menu mobile overlay
 .w-nav-overlay {
   @include responsivo("tablet") {
     width: 100% !important;
     left: 50%;
     transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 991px) {
-  .nav_menu {
-    &:not(:last-child) {
-      margin-bottom: 24px!important;
-    }
   }
 }
