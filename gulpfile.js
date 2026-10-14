@@ -31,7 +31,7 @@ function compileBundleJS() {
       'src/js/common.js',
       'src/js/dropdown-desktop.js',
       'src/js/dropdown-mobile.js',
-      'src/js/steps-reveal.js',
+      'src/js/steps-timeline.js',
     ])
     .pipe(sourcemaps.init())
     .pipe(concat('bundle.js'))
@@ -77,7 +77,7 @@ function watch() {
       'src/js/common.js',
       'src/js/dropdown-desktop.js',
       'src/js/dropdown-mobile.js',
-      'src/js/steps-reveal.js',
+      'src/js/steps-timeline.js',
     ],
     compileBundleJS
   );
