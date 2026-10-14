@@ -26,6 +26,10 @@
   // Fim da linha, como no Lottie: canto inferior esquerdo
   const END_X = 0;
 
+  // Tablet e mobile (breakpoint "medium" do Webflow): linha reta à esquerda,
+  // do primeiro ao último ponto. A coluna da linha é a classe do Webflow.
+  const STRAIGHT_QUERY = window.matchMedia("(max-width: 991px)");
+
   const SVG_NS = "http://www.w3.org/2000/svg";
 
   // Distância do topo de `el` até o topo de `ancestor`, ignorando transforms
@@ -88,20 +92,27 @@
       height = canvas.offsetHeight;
       if (!width || !height) return;
 
+      const straight = STRAIGHT_QUERY.matches;
       const canvasTop = offsetTopWithin(canvas, grid);
       const points = items.map((item, i) => {
         const anchor = item.querySelector(ANCHOR_SELECTOR) || item;
         const y = offsetTopWithin(anchor, grid) + anchor.offsetHeight / 2 - canvasTop;
-        return { x: DOT_X[i % DOT_X.length] * width, y };
+        const x = straight ? width / 2 : DOT_X[i % DOT_X.length] * width;
+        return { x, y };
       });
-      points.push({ x: END_X * width, y: height });
+
+      const first = points[0];
+      const last = points[points.length - 1];
+      const d = straight
+        ? `M${first.x},${first.y} L${last.x},${last.y}`
+        : smoothPath([...points, { x: END_X * width, y: height }]);
 
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-      path.setAttribute("d", smoothPath(points));
+      path.setAttribute("d", d);
       totalLength = path.getTotalLength();
       path.style.strokeDasharray = totalLength;
 
-      dotY = points.slice(0, -1).map((point, i) => {
+      dotY = points.map((point, i) => {
         dots[i].style.left = `${point.x}px`;
         dots[i].style.top = `${point.y}px`;
         return point.y;
